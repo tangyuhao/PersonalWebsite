@@ -1,0 +1,13 @@
+pre {
+    padding:0;
+    max-height: 500px;
+    word-break: keep-all ;
+    word-wrap: normal;
+    /*background: GhostWhite ;*/
+    background: Snow ;
+    }
+pre code {
+  white-space: pre;
+  background-color: transparent;
+  border-radius: 0;
+}

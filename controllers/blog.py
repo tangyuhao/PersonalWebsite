@@ -8,6 +8,15 @@ def show_bloghome():
         }
         return render_template("bloghome.html",**options)
 
+@blog.route('/test') 
+def show_test():
+        options = {
+            "codeHighlight": True
+
+        }
+        return render_template("test.html",**options)
+
+
 @blog.errorhandler(404)
 def page_not_found(e):
     options = {
