@@ -29,6 +29,8 @@
 
         <!-- SWIE SLIDER -->
         <link href="assets/plugins/slider.swiper/dist/css/swiper.min.css" rel="stylesheet" type="text/css" />
+
+        <link href="assets/css/custom/custom.css" rel="stylesheet" type="text/css" />
     </head>
 
     <!--
@@ -278,5 +280,14 @@
         <!-- SWIPE SLIDER -->
         <script type="text/javascript" src="assets/plugins/slider.swiper/dist/js/swiper.min.js"></script>
         <script type="text/javascript" src="assets/js/view/demo.swiper_slider.js"></script>
+        {% if codeHighlight is defined %}
+        <link rel="stylesheet" href="/assets/plugins/highlight/styles/tomorrow.css">
+        <link rel="stylesheet" href="/assets/plugins/highlight/line.css">
+        <script src="/assets/plugins/highlight/highlight.pack.js"></script>
+        <script src="/assets/plugins/highlight/highlightjs-line-numbers.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <script>hljs.initLineNumbersOnLoad();</script>
+        <!-- important: if you find x scroll bar will appear when using y scroll bar, this might be due tu in tomorrow.css, you have .hljs {overflow-x: auto;} -->
+        {% endif %}
     </body>
 </html>
