@@ -13,7 +13,7 @@ if sys.executable != INTERP:
 #@application.route('/')
 #def index():
 #        return 'Hello Passenger'
-from app_server import app as application
+from app import app as application
 # Comment out the next two lines to disable debugging when your app is ready
 #from werkzeug.debug import DebuggedApplication
 #application = DebuggedApplication(application, evalex=True)
