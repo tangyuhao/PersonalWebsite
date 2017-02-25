@@ -119,10 +119,7 @@
 	display: inline-block;
 }
 
-.ls-v5 .ls-bottom-slidebuttons,
-.ls-v5 .ls-nav-start,
-.ls-v5 .ls-nav-stop,
-.ls-v5 .ls-nav-sides {
+.ls-v5 .ls-bottom-nav-wrapper {
 	top: -30px;
 }
 

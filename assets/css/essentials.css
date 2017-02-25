@@ -5659,6 +5659,14 @@ section.dark .box-inner h6>a:hover {
 	font-weight:300;
 }
 
+.box-gradient a {
+	display: block;
+	color: #fff;
+}
+	.box-gradient a:hover {
+		color: #ddd;
+	}
+
 	/* pink */
 	.box-pink>div:nth-child(1) {
 		background-color:#e2476b;

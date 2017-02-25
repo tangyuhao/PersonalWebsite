@@ -1,1 +1,1 @@
-mysql -u yhtang1993 -p -h mysql.yuhaotang.com yuhaotang_blogdb
+mysql -u root -p blogdb

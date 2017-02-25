@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS User, Album, Contain, Photo, AlbumAccess;
-SET @sequencenum = 0;
+DROP TABLE IF EXISTS User, Album, Photo, BlogGroup, BlogContain, Blog, Article;
 CREATE TABLE User(
 	username VARCHAR(20),
 	firstname VARCHAR(20),
@@ -8,61 +7,64 @@ CREATE TABLE User(
 	email VARCHAR(40),
 	PRIMARY KEY(username)
 	);
+CREATE TABLE BlogGroup(
+	groupid INT AUTO_INCREMENT,
+	title VARCHAR(50),
+	PRIMARY KEY(groupid)
+	);
+CREATE TABLE Blog(
+	blogid INT AUTO_INCREMENT,
+	groupid INT,
+	title VARCHAR(50),
+	PRIMARY KEY(blogid)
+	);
+CREATE TABLE Article(
+	articleid VARCHAR(40),
+	blogid INT,
+	title VARCHAR(256),
+	abstract VARCHAR(4096) NOT NULL DEFAULT '',
+	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	lastupdated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	author VARCHAR(20) DEFAULT 'Mr.Tang',
+	cover_img VARCHAR(40) DEFAULT 'default-1.jpg',
+	PRIMARY KEY(articleid)
+	);
 CREATE TABLE Album(
 	albumid INT AUTO_INCREMENT,
 	title VARCHAR(50),
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	lastupdated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	username VARCHAR(20),
-	access ENUM('public','private'),
 	PRIMARY KEY(albumid)
-	);
-CREATE TABLE Contain(
-	sequencenum INT,
-	albumid INT,
-	picid VARCHAR(40),
-	caption VARCHAR(255) NOT NULL DEFAULT ' ',
-	PRIMARY KEY(sequencenum)
 	);
 CREATE TABLE Photo(
 	picid VARCHAR(40),
+	albumid INT,
 	format CHAR(3),
+	caption VARCHAR(255) NOT NULL DEFAULT '',
 	date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(picid)
 	);
 
-CREATE TABLE AlbumAccess(
-	albumid INT,
-	username VARCHAR(20),
-	CONSTRAINT Unique_id_user PRIMARY KEY (albumid,username)
-	);
-
-
-CREATE TRIGGER add_update AFTER INSERT ON Contain
+CREATE TRIGGER photo_add_update AFTER INSERT ON Photo
 FOR EACH ROW
 	UPDATE Album 
-	SET lastupdated = DEFAULT 
+	SET lastupdated = CURRENT_TIMESTAMP
 	WHERE albumid = NEW.albumid;
 
-CREATE TRIGGER cap_update AFTER UPDATE ON Contain
+CREATE TRIGGER photo_cap_update AFTER UPDATE ON Photo
 FOR EACH ROW
 	UPDATE Album 
 	SET lastupdated = CURRENT_TIMESTAMP 
 	WHERE albumid = NEW.albumid;
 
-CREATE TRIGGER auto_seq AFTER INSERT ON Photo
+CREATE TRIGGER photo_delete_update AFTER DELETE ON Photo
 FOR EACH ROW
-	SET @sequencenum = @sequencenum + 1;
-
-delimiter //
-CREATE TRIGGER delete_delete AFTER DELETE ON Contain
-FOR EACH ROW
-BEGIN 
 	UPDATE Album 
-	SET lastupdated = DEFAULT 
+	SET lastupdated = CURRENT_TIMESTAMP
 	WHERE albumid = OLD.albumid;
-	DELETE FROM Photo  
-	WHERE picid = OLD.picid;
-END
-//
-delimiter ;
+
+-- CREATE TRIGGER album_delete_update AFTER DELETE ON Album
+-- FOR EACH ROW
+-- 	DELETE FROM Photo
+-- 	WHERE albumid = OLD.albumid;
+

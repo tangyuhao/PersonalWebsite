@@ -49,10 +49,12 @@
 
 
 		/* --- */
-		if(jQuery("html").hasClass("chrome") && jQuery("body").hasClass("smoothscroll")) {
+		if(jQuery("html").hasClass("chrome") && jQuery("body").hasClass("smoothscroll") && navigator.platform.indexOf('Mac') < 0) {
+
 			loadScript(plugin_path + 'smoothscroll.js', function() {
 				jQuery.smoothScroll();
 			});
+
 		}
 		/* --- */
 	});
@@ -461,7 +463,7 @@
 		if(_header_el.hasClass('sticky')) {
 
 			jQuery(window).scroll(function() {
-				if(window.width > 768) {
+				if(window.width > 0) { // 768 to disable on mobile
 
 					var _scrollTop 	= jQuery(document).scrollTop();
 						_topBar_H 	= jQuery("#topBar").outerHeight() || 0;
@@ -780,13 +782,16 @@
 /** Onepage Nav
  **************************************************************** **/
 	function _onepageNav() {
-		var _container = jQuery("#topMain.nav-onepage");
 
-		if(_container.length > 0) {
+
+		// Top Navigation
+		var _container1 = jQuery("#topMain.nav-onepage");
+
+		if(_container1.length > 0) {
 
 			loadScript(plugin_path + 'jquery.nav.min.js', function() {
 
-				jQuery(_container).onePageNav({
+				jQuery(_container1).onePageNav({
 					currentClass: 		'active',
 					changeHash: 		false,
 					scrollSpeed: 		750,
@@ -798,6 +803,28 @@
 			});
 		
 		}
+
+
+		// Bullet Navigation
+		var _container2 = jQuery("#nav-bullet");
+
+		if(_container2.length > 0) {
+
+			loadScript(plugin_path + 'jquery.nav.min.js', function() {
+
+				jQuery(_container2).onePageNav({
+					currentClass: 		'active',
+					changeHash: 		false,
+					scrollSpeed: 		750,
+					scrollThreshold: 	0.5,
+					filter: 			':not(.external)',
+					easing: 			'easeInOutExpo'
+				});
+
+			});
+		
+		}
+
 
 	}
 
