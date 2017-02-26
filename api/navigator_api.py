@@ -14,7 +14,7 @@ def topnavbar_api_route():
         blog_part = {}
         for group in BlogGroups:
             cur = db.cursor()
-            cur.execute("SELECT title,blogid FROM Blog WHERE groupid=%d" %(group["groupid"]))
+            cur.execute("SELECT title,blogid FROM Blog WHERE groupid=%d ORDER BY title ASC" %(group["groupid"]))
             blog_part[group["title"]] = cur.fetchall()
         cur = db.cursor()
         cur.execute("SELECT title,albumid FROM Album")

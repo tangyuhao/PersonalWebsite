@@ -9,8 +9,9 @@ def show_homepage(args=None):
             'isHomePage':True
         }
         return render_template("home.html",**options)
+    elif (".html" in args):
+        abort(403)
     else:
-        print(args)
         abort(404)
 @main.errorhandler(404)
 def page_not_found(e):
@@ -18,3 +19,9 @@ def page_not_found(e):
         'isError':True
     }
     return render_template('404error.html',**options), 404
+@main.errorhandler(403)
+def page_under_development(e):
+    options = {
+        'isError':True
+    }
+    return render_template('403error.html',**options), 403
