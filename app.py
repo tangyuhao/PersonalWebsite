@@ -19,7 +19,6 @@ app.register_blueprint(controllers.logout)
 # Register the api
 app.register_blueprint(api.user_api)
 app.register_blueprint(api.login_api)
-app.register_blueprint(api.logout_api)
 app.register_blueprint(api.navigator_api)
 
 # Listen on external IPs
