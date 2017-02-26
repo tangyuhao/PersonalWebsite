@@ -16,14 +16,14 @@ INSERT INTO BlogGroup(title) VALUES ('Others'); # id: 3
 INSERT INTO Blog(title,groupid) VALUES ('Others',3);
 
 # These are just for testing blogs!
-INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES ('dfdidskdsfhdf', 1, 'this is a test article', 'this is a test for abstract', 'default-1.jpg');
-INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES ('sdfdsfdsfdsfsd', 1, 'this is a test article', 'this is a test for abstract', 'default-1.jpg');
-INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES ('dfdidskdsfdsfdsdsfhdf', 1, 'this is a test article', 'this is a test for abstract', 'default-1.jpg');
-INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES ('dfdidskdsfdsdsfhdf', 3, 'this is a test article', 'this is a test for abstract', 'default-1.jpg');
-INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('dfdidskcvcxvdsfhdf', 4, 'this is a test article', 'this is a test for abstract');
-INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('dfdidscxvcxsdfkdsfhdf', 2, 'this is a test article', 'this is a test for abstract');
-INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('dfdidsfdsdskdsfhdf', 2, 'this is a test article', 'this is a test for abstract');
-INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('dfdidskcxvcxvxdsfhdf', 2, 'this is a test article', 'this is a test for abstract');
+INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES ('sample_article_1', 1, 'this is a test article', 'this is a test for abstract', 'default-1.jpg');
+INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES ('sample_article_2', 1, 'this is a test article', 'this is a test for abstract', 'default-1.jpg');
+INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES ('sample_article_3', 1, 'this is a test article', 'this is a test for abstract', 'default-1.jpg');
+INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES ('sample_article_4', 3, 'this is a test article', 'this is a test for abstract', 'default-1.jpg');
+INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('sample_article_5', 4, 'this is a test article', 'this is a test for abstract');
+INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('sample_article_6', 2, 'this is a test article', 'this is a test for abstract');
+INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('sample_article_7', 2, 'this is a test article', 'this is a test for abstract');
+INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('sample_article_8', 2, 'this is a test article', 'this is a test for abstract');
 
 # These are just for testing albums!
 INSERT INTO Album(title) VALUES('I love sports');

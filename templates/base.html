@@ -4,7 +4,7 @@
 <!--[if gt IE 9]><!-->  <html> <!--<![endif]-->
     <head>
         <meta charset="utf-8" />
-        <title>base title</title>
+        <title>Mr.Tang</title>
         <meta name="keywords" content="HTML5,CSS3,Template" />
         <meta name="description" content="" />
         <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
@@ -194,6 +194,9 @@
                                             <li><a href="index-simple-layerslider.html">FAQ</a></li>
                                         </ul>
                                     </li>
+                                    {% if session["username"] is defined%}
+                                    <li><a href="/logout">LOG OUT</a></li>
+                                    {% endif %}
                                 </ul>
 
                             </nav>
@@ -290,5 +293,7 @@
         <script>hljs.initLineNumbersOnLoad();</script>
         <!-- important: if you find x scroll bar will appear when using y scroll bar, this might be due tu in tomorrow.css, you have .hljs {overflow-x: auto;} -->
         {% endif %}
+        {% block jsblock %}
+        {% endblock %}
     </body>
 </html>

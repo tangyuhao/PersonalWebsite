@@ -12,6 +12,8 @@ app = Flask(__name__, template_folder='templates', static_folder='assets')
 app.secret_key = '7UOCc\x07\xe2vz\x8b\xdf\x08y[\xce\xd2SI\x0c\xda%b\xd9N'
 app.register_blueprint(controllers.main)
 app.register_blueprint(controllers.blog)
+app.register_blueprint(controllers.login)
+app.register_blueprint(controllers.logout)
 
 
 # Register the api

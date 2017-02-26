@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block header %}
+            <!-- 
+                PAGE HEADER 
+                
+                CLASSES:
+                    .page-header-xs = 20px margins
+                    .page-header-md = 50px margins
+                    .page-header-lg = 80px margins
+                    .page-header-xlg= 130px margins
+                    .dark           = dark page header
+
+                    .shadow-before-1    = shadow 1 header top
+                    .shadow-after-1     = shadow 1 header bottom
+                    .shadow-before-2    = shadow 2 header top
+                    .shadow-after-2     = shadow 2 header bottom
+                    .shadow-before-3    = shadow 3 header top
+                    .shadow-after-3     = shadow 3 header bottom
+            -->
+            <section class="page-header page-header-xs">
+                <div class="container">
+
+                    <h1>LOGIN</h1>
+
+                    <!-- breadcrumbs -->
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Pages</a></li>
+                        <li class="active">Login</li>
+                    </ol><!-- /breadcrumbs -->
+
+                </div>
+            </section>
+            <!-- /PAGE HEADER -->
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+        <!-- ALERT -->
+        <div id="error_div" class="alert alert-mini alert-danger margin-bottom-30" style="display:none">
+            <strong>Oh snap!</strong> Login Incorrect!
+        </div><!-- /ALERT -->
+
+        <div class="box-static box-border-top padding-30">
+            <div class="box-title margin-bottom-30">
+                <h2 class="size-20">I'm a returning customer</h2>
+            </div>
+
+            <form id="form-login" class="nomargin" method="post" action="#" autocomplete="off">
+                <div class="clearfix">
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <input id="login_username_input" type="text" name="username" class="form-control" placeholder="Username" required="">
+                    </div>
+                    
+                    <!-- Password -->
+                    <div class="form-group">
+                        <input id="login_password_input" type="password" name="password" class="form-control" placeholder="Password" required="">
+                    </div>
+                        
+                </div>
+                
+                <div class="row">
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        
+                        <!-- Inform Tip -->                                        
+                        <div class="form-tip pt-20">
+                            <a class="no-text-decoration size-13 margin-top-10 block" href="#">Forgot Password?</a>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-md-6 col-sm-6 col-xs-6 text-right">
+
+                        <button class="btn btn-primary">OK, LOG IN</button>
+
+                    </div>
+                    
+                </div>
+                
+            </form>
+
+        </div>
+        
+        <div class="margin-top-30 text-center">
+            <a href="page-register-1.html"><strong>Create Account</strong></a>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block jsblock %}
+    <script type="text/javascript" src="/assets/custom-js/login.js"></script>
+{% endblock %}

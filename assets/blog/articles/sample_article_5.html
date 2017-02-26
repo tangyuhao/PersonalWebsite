@@ -1,0 +1,81 @@
+<h1 id="toc_0">Joint Tracking and Segmentation of Multiple Targets</h1>
+
+<p>This is a framework for tracking and segmenting multiple targets.<br/>
+This work is described in the following CVPR 2015 paper <a href="http://www.milanton.de/files/cvpr2015/cvpr2015-anton.pdf">(pdf)</a></p>
+
+<pre><code>Joint Tracking and Segmentation of Multiple Targets
+A. Milan, L. Leal-Taixe, K. Schindler and I. Reid 
+</code></pre>
+
+<h1 id="toc_1">Installation</h1>
+
+<p>This section describes how to get segTracking running on linux.</p>
+
+<p>Install the required dependencies</p>
+
+<pre><code>sudo apt-get install libgsl0ldbl # Ubuntu
+</code></pre>
+
+<p>or</p>
+
+<pre><code>sudo dnf install gsl-devel # Fedora
+</code></pre>
+
+<p>Get the latest version of the code and cd into that directory</p>
+
+<pre><code>hg clone https://bitbucket.org/amilan/segtracking
+cd segtracking
+</code></pre>
+
+<p>Start Matlab and run</p>
+
+<pre><code>installSegTracker;
+</code></pre>
+
+<h1 id="toc_2">Running</h1>
+
+<p>Now all should be set up. You can start the tracker with.</p>
+
+<pre><code>stateInfo = swSegTracker(&#39;scene&#39;,&#39;config/scene.ini&#39;,&#39;params&#39;,&#39;config/params.ini&#39;);
+</code></pre>
+
+<p>The first run will take some time because certain auxiliary structures<br/>
+need to be recomputed. Subsequent calls will be much faster. The provided<br/>
+parameter values have not been optimized and need to be adjusted for the<br/>
+test data.</p>
+
+<h2 id="toc_3">Other videos</h2>
+
+<p>To run the tracker on other videos, adjust the necessary settings in a scene file in </p>
+
+<pre><code>scene.ini
+</code></pre>
+
+<p>Parameters can be set in</p>
+
+<pre><code>params.ini
+</code></pre>
+
+<p>Please do not forget to cite our work if you end up using this code:</p>
+
+<pre><code>@inproceedings{Milan:2015:CVPR,
+Author = {Anton Milan and Laura Leal-Taixé and Konrad Schindler and Ian Reid},
+Booktitle = {CVPR},
+Title = {Joint Tracking and Segmentation of Multiple Targets},
+Year = {2015}
+}
+</code></pre>
+
+<h2 id="toc_4">Changes</h2>
+
+<pre><code>Jun 17, 2015    Small big fix with addpath (thanks Qi)
+Apr 24, 2015    Initial public release
+</code></pre>
+
+<h2 id="toc_5">License</h2>
+
+<p>The current work is licensed under the MIT licese.</p>
+
+<p>IMPORTANT: All external libraries (in ./external) are included for convenience<br/>
+and may follow a different license! Please be aware of the individual <br/>
+packages if you use this code.</p>
