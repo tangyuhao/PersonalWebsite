@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    $.getJSON("/api/nav/topnavbar",handler)
+    $.getJSON("/api/nav/topnavbar",topnavbar_handler)
 
 });
-function handler(data){
+function topnavbar_handler(data){
     // console.log(data);
     var blogGroup = data.Blog;
-    console.log(blogGroup)
+    //console.log(blogGroup);
     var photography = data.Photography;
     var photographyList = $("<ul></ul>",{"class":"dropdown-menu"});
     for (var item of photography){
@@ -13,10 +13,10 @@ function handler(data){
             item.title.toUpperCase() + "</a></li>");
     }
     $("#nav-photography").after(photographyList)
-    keys = Object.keys(blogGroup).sort()
-    keys.splice(keys.indexOf("Others"),1)
-    keys.push("Others")
-    console.log(keys)
+    keys = Object.keys(blogGroup).sort();
+    keys.splice(keys.indexOf("Others"),1);
+    keys.push("Others");
+    //console.log(keys);
 
     var blogGroupList = $("<ul></ul>",{"class":"dropdown-menu"});
     for (var key of keys ){
@@ -28,7 +28,7 @@ function handler(data){
         // console.log(blogs)
 
         for (var item in blogs){
-            console.log( blogs[item])
+            //console.log( blogs[item]);
             subList.append("<li><a href=\"/blog?blogid=" +  blogs[item].blogid + "\">"+
             blogs[item].title.toUpperCase() + "</a></li>");
         }
