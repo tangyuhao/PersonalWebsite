@@ -11,7 +11,7 @@ def show_test():
     else:
         db = connect_to_database()
         cur = db.cursor()
-        cur.execute("SELECT * FROM Article WHERE articleid='%s'" %(articleid))
+        cur.execute("SELECT *,DATE_FORMAT(created,'%%b %%d, %%Y') AS date FROM Article WHERE articleid='%s'" %(articleid))
         article = cur.fetchone()
         if (not article):
             abort(404)

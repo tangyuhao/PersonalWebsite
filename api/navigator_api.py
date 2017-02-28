@@ -29,10 +29,10 @@ def all_articles_api_route(blog,infotype):
         if (blog == "all"):
             cur = db.cursor()
             if (infotype == "with_abstract"):
-                cur.execute("SELECT * FROM Article ORDER BY lastupdated DESC")
+                cur.execute("SELECT *,DATE_FORMAT(created,'%%b %%d, %%Y') AS date FROM Article ORDER BY lastupdated DESC")
             else:
                 # should be no_abstract, but others are all fine
-                cur.execute("SELECT articleid,author,blogid,created,lastupdated,title FROM Article ORDER BY lastupdated DESC")
+                cur.execute("SELECT articleid,author,blogid,created,lastupdated,title,DATE_FORMAT(created,'%%b %%d, %%Y') AS date FROM Article ORDER BY lastupdated DESC")
             ret_list = cur.fetchall()
             return jsonify({"articles":ret_list}),200
         else:
@@ -44,10 +44,10 @@ def all_articles_api_route(blog,infotype):
                     return jsonify({}),404
                 cur = db.cursor()
                 if (infotype == "with_abstract"):
-                    cur.execute("SELECT * FROM Article WHERE blogid=%d ORDER BY lastupdated DESC" %(blog))
+                    cur.execute("SELECT *,DATE_FORMAT(created,'%%b %%d, %%Y') AS date FROM Article WHERE blogid=%d ORDER BY lastupdated DESC" %(blog))
                 else:
                     # should be no_abstract, but others are all fine
-                    cur.execute("SELECT articleid,author,blogid,created,lastupdated,title FROM Article WHERE blogid=%d ORDER BY lastupdated DESC" %(blog))
+                    cur.execute("SELECT articleid,author,blogid,created,lastupdated,title,DATE_FORMAT(created,'%%b %%d, %%Y') AS date FROM Article WHERE blogid=%d ORDER BY lastupdated DESC" %(blog))
                 ret_list = cur.fetchall()
                 return jsonify({"articles":ret_list}),200
             else:

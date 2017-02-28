@@ -35,7 +35,7 @@ def show_blog():
         if (NUM_EACHPAGE * page - NUM_EACHPAGE >= count):
             abort(404)
         cur = db.cursor()
-        cur.execute("SELECT * FROM Article ORDER by lastupdated DESC LIMIT %d,%d;" \
+        cur.execute("SELECT *,DATE_FORMAT(created,'%%b %%d, %%Y') AS date FROM Article ORDER by lastupdated DESC LIMIT %d,%d;" \
             %(NUM_EACHPAGE*page - NUM_EACHPAGE,NUM_EACHPAGE))
         articles = cur.fetchall()
 
@@ -46,7 +46,7 @@ def show_blog():
         if (NUM_EACHPAGE * page - NUM_EACHPAGE >= count):
             abort(404)
         cur = db.cursor()
-        cur.execute("SELECT * FROM Article WHERE blogid=%d ORDER by lastupdated DESC LIMIT %d,%d;" \
+        cur.execute("SELECT *,DATE_FORMAT(created,'%%b %%d, %%Y') AS date FROM Article WHERE blogid=%d ORDER by lastupdated DESC LIMIT %d,%d;" \
             %(blogid,NUM_EACHPAGE*page - NUM_EACHPAGE,NUM_EACHPAGE))
         articles = cur.fetchall()
 
