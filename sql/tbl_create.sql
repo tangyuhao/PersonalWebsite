@@ -19,14 +19,14 @@ CREATE TABLE Blog(
 	PRIMARY KEY(blogid)
 	);
 CREATE TABLE Article(
-	articleid VARCHAR(40),
+	articleid VARCHAR(64),
 	blogid INT,
 	title VARCHAR(256),
 	abstract VARCHAR(4096) NOT NULL DEFAULT '',
 	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	lastupdated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	author VARCHAR(20) DEFAULT 'Mr.Tang',
-	cover_img VARCHAR(40) DEFAULT '',
+	cover_img VARCHAR(64) DEFAULT '',
 	reading_num INT DEFAULT 0,
 	PRIMARY KEY(articleid)
 	);

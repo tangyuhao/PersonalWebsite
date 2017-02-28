@@ -4,31 +4,103 @@
 {% endblock %} 
 
 {% block header %}
-<!-- 
-                PAGE HEADER 
-                
-                CLASSES:
-                    .page-header-xs = 20px margins
-                    .page-header-md = 50px margins
-                    .page-header-lg = 80px margins
-                    .page-header-xlg= 130px margins
-                    .dark           = dark page header
 
-                    .shadow-before-1    = shadow 1 header top
-                    .shadow-after-1     = shadow 1 header bottom
-                    .shadow-before-2    = shadow 2 header top
-                    .shadow-after-2     = shadow 2 header bottom
-                    .shadow-before-3    = shadow 3 header top
-                    .shadow-after-3     = shadow 3 header bottom
-                    .light          = light page header
-            -->
-            <section class="page-header page-header-lg parallax parallax-4" style="background-image:url('assets/blog/images/default-1.jpg') ">
-                <div class="overlay dark-1"><!-- dark overlay [1 to 9 opacity] --></div>
-
-            </section>
-            <!-- /PAGE HEADER -->
 {% endblock %}
 {% block content %}
+<h1 align="center">Article Submittion</h1>
+{% if message is defined %}
+<p style="color:red">{{message}}</p>
+{% endif %}
+
+<form id="article_submit_form" enctype="multipart/form-data" action="" method="POST" class="">
+<!-- <div class="col-md-6 col-sm-6">
+ --><div class="fancy-form fancy-form-select ">
+    <select name="blogid" class="form-control select2" >
+        <option value="">--- Blog Class ---</option>
+        {% if form is defined %}
+            {% for blog in blogs %}
+                {% if blog.blogid|string == form.blogid %}
+                    <option selected="selected" value="{{blog.blogid}}">{{blog.title}}</option>
+                {% else %}
+                    <option value="{{blog.blogid}}">{{blog.title}}</option>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for blog in blogs %}
+                <option value="{{blog.blogid}}">{{blog.title}}</option>
+            {% endfor %}
+        {% endif %}
+    </select>
+
+
+    <!--
+        .fancy-arrow
+        .fancy-arrow-double
+    -->
+    <i class="fancy-arrow"></i>
+</div>
+
+
+
+
+<!-- input -->
+<div class="fancy-form">
+    <i class="fa fa-user"></i>
+
+    {% if form is defined %}
+    <input type="text" class="form-control" name="title" value="{{form.title}}" placeholder="Article Title">
+    {% else %}
+    <input type="text" class="form-control" name="title" placeholder="Article Title">
+    {% endif %}
+
+    <!-- tooltip - optional, bootstrap tooltip can be used instead -->
+    <span class="fancy-tooltip top-left"> <!-- positions: .top-left | .top-right -->
+        <em>I am a Title!</em>
+    </span>
+</div>
+
+<!-- fancy info -->
+<div class="fancy-file-upload fancy-file-info">
+    <i class="fa fa-upload"></i>
+
+    <input type="file" class="form-control" accept="image/*" name="img_file" onchange="jQuery(this).next('input').val(this.value); " />
+    <input type="text" class="form-control"  placeholder="no file selected" readonly="" />
+    <span class="button">Choose File</span>
+</div>
+
+<!-- textarea -->
+<div class="fancy-form">
+    {% if form is defined %}
+    <textarea name="abstract" rows="5" class="form-control word-count"  data-info="textarea-words-info" placeholder="Abstract Here" >{{form.abstract}}</textarea>
+    {% else %}
+    <textarea name="abstract" rows="5" class="form-control word-count"  data-info="textarea-words-info" placeholder="Abstract Here"></textarea>
+    {% endif %}
+    <i class="fa fa-comments"><!-- icon --></i>
+
+    <span class="fancy-hint size-11 text-muted">
+        <strong>Hint:</strong> 4000 characters allowed!
+    </span>
+
+</div>
+
+<!-- textarea -->
+<div class="fancy-form">
+    {% if form is defined %}
+    <textarea name="content" rows="15" class="form-control "  data-info="textarea-words-info" placeholder="Content Here" >{{form.content}}</textarea>
+    {% else %}
+    <textarea name="content" rows="15" class="form-control "  data-info="textarea-words-info" placeholder="Content Here"></textarea>    
+    {% endif %}
+
+    <i class="fa fa-comments"><!-- icon --></i>
+
+</div>
+
+
+<button type="submit" form="article_submit_form" class="btn btn-3d btn-teal btn-xlg btn-block margin-top-30">SUBMIT</button>
+</form>
+
+
+
 {% endblock %}
 {% block jsblock %}
 {% endblock %}

@@ -14,54 +14,81 @@ article_upload = Blueprint('article_upload', __name__, template_folder='template
 
 @article_upload.route('/article_upload',methods=['GET','POST'])
 def upload_article_route():
+    db = connect_to_database()
+    cur = db.cursor()
+    cur.execute("SELECT title,blogid FROM Blog")
+    blogs = cur.fetchall()
+    article_uploaded = False
     if request.method == 'POST':
+        article_uploaded = True
         # form:
         # {title:xxx, abstract: xxx, content: xxx, blog_name: xxx, img: (file)}
         if ('username' not in session or session['username']!="yuhaotang"):
             return("error: not logged in or not permitted")
         form = request.form
-        db = connect_to_database()
-        if 'img_file' not in request.files:
-            return ("error:no image file"),422
-        orig_name = request.files['img_file']
-        if orig_name.filename == '':
-            return redirect("error:no image file name"),422
-        if orig_name and allowed_file(orig_name.filename):
-            # print(orig_name.filename)
-            filename = secure_filename(orig_name.filename)
-            print(filename)
-            img_name = title_hash(filename)
-            img_name_split = os.path.splitext(filename)
-            ext = img_name_split[1]
-            if (not ext):
-                return ("error: filename wrong"),500
-            img_name_ext = img_name+ext
-            orig_name.save(os.path.join(UPLOAD_FOLDER,img_name_ext))
-            try:
-                file_name = title_hash(form["title"])
-                f = open(os.path.join(CONTENT_FOLDER,file_name + ".html"),"w+")
-                f.write(form["content"])
-                f.close()
-            except:
-                return ("error:create file failed"),500
-
-            cur = db.cursor()
-            cmd = "SELECT blogid FROM Blog WHERE title = %s"
-            cur.execute(cmd,(form["blog_name"]))
-            print("OK")
-            bloginfo = cur.fetchone()
-            if (not bloginfo):
-                return ("error: cannot find this blog class"),404
-            else:
-                cur = db.cursor()
-                cmd = "INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES (%s,%s,%s,%s,%s)"
-                cur.execute(cmd, (file_name,bloginfo["blogid"],form["title"],form["abstract"],img_name))
-    if ('username' not in session or session['username']!="yuhaotang"):
-        print("wrong")
+        files = request.files
+        status, mesg, ret_code = check_upload_valid(form,files,db)
+        if (status == False):
+            options = {
+                "blogs": blogs,
+                "form": form,
+                "message": mesg
+            }
+            return render_template("article_upload.html",**options)
+    if ('username' not in session or session['username'] != "yuhaotang"):
         abort(404)
     else:
-        print("ok")
-        return render_template("article_upload.html")
+        if (article_uploaded):
+            options = {
+                "message": mesg,
+                "blogs": blogs
+            }
+        else:
+            options = {
+                "blogs": blogs
+            }
+        return render_template("article_upload.html", **options)
+
+def check_upload_valid(form,files,db):
+    print(form)
+    print(files)
+    needed_key = ['title', 'abstract', 'content', 'blogid']
+    for key in needed_key:
+        if key not in form:
+            return False,"ERROR: no enough form elements", 422
+    if "img_file" not in files:
+        return False, "ERROR: no image file", 422
+    else:
+        for key in needed_key:
+            if form[key] == '':
+                return False, "ERROR: empty input is not allowed", 422
+
+        orig_file = files['img_file']
+        print((orig_file.filename))
+        if orig_file and allowed_file(orig_file.filename):
+            filename = secure_filename(orig_file.filename) # prevent injection, do not accept chinese charactors
+        else:
+            return False, "ERROR: file not allowed or not uploaded", 422
+        img_name = title_hash(filename)
+        img_name_split = os.path.splitext(filename)
+        ext = img_name_split[1]
+        if (not ext):
+            return False, "ERROR: image filename wrong", 500
+        img_name_ext = img_name+ext
+        orig_file.save(os.path.join(UPLOAD_FOLDER,img_name_ext))
+        file_name = title_hash(form["title"])
+        try:
+            f = open(os.path.join(CONTENT_FOLDER,file_name + ".html"),"w+")
+        except:
+            f.close()
+            return False, "ERROR:create file failed", 500
+        f.write(form['content'])
+        f.close()
+        cur = db.cursor()
+        cmd = "INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES (%s,%s,%s,%s,%s)"
+        cur.execute(cmd, (file_name,form["blogid"],form["title"],form["abstract"],img_name_ext))
+        return True, "SUCCESS", 200
+
 
 
 

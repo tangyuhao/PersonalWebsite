@@ -17,20 +17,20 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
 
         <!-- CORE CSS -->
-        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         
         <!-- THEME CSS -->
-        <link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/essentials.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/layout.css" rel="stylesheet" type="text/css" />
 
         <!-- PAGE LEVEL SCRIPTS -->
-        <link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+        <link href="/assets/css/header-1.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
 
         <!-- SWIE SLIDER -->
-        <link href="assets/plugins/slider.swiper/dist/css/swiper.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/plugins/slider.swiper/dist/css/swiper.min.css" rel="stylesheet" type="text/css" />
 
-        <link href="assets/custom-css/custom.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/custom-css/custom.css" rel="stylesheet" type="text/css" />
         {% if codeHighlight is defined %}
         <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
@@ -139,12 +139,12 @@
                         <!-- Logo -->
                         <a class="logo pull-left" href="/">
                         {% if isError is defined %}
-                            <img src="assets/images/MrTang_light_logo.png" alt="">
+                            <img src="/assets/images/MrTang_light_logo.png" alt="">
                         {% elif (isHomepage is defined) or (isArticle is defined)%}
-                            <img src="assets/images/MrTang_light_logo.png" alt="">
-                            <img src="assets/images/MrTang_logo.png" alt="">
+                            <img src="/assets/images/MrTang_light_logo.png" alt="">
+                            <img src="/assets/images/MrTang_logo.png" alt="">
                         {% else %}
-                            <img src="assets/images/MrTang_logo.png" alt="">
+                            <img src="/assets/images/MrTang_logo.png" alt="">
                         {% endif %}
                         </a>
 
@@ -275,18 +275,18 @@
 
 
         <!-- JAVASCRIPT FILES -->
-        <script type="text/javascript">var plugin_path = 'assets/plugins/';</script>
-        <script type="text/javascript" src="assets/plugins/jquery/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript">var plugin_path = '/assets/plugins/';</script>
+        <script type="text/javascript" src="/assets/plugins/jquery/jquery-2.2.3.min.js"></script>
 
-        <script type="text/javascript" src="assets/js/scripts.js"></script>
+        <script type="text/javascript" src="/assets/js/scripts.js"></script>
         
         <!-- STYLESWITCHER - REMOVE -->
-        <!-- <script async type="text/javascript" src="assets/plugins/styleswitcher/styleswitcher.js"></script> -->
+        <!-- <script async type="text/javascript" src="/assets/plugins/styleswitcher/styleswitcher.js"></script> -->
 
         <!-- SWIPE SLIDER -->
-        <script type="text/javascript" src="assets/plugins/slider.swiper/dist/js/swiper.min.js"></script>
-        <script type="text/javascript" src="assets/js/view/demo.swiper_slider.js"></script>
-        <script type="text/javascript" src="assets/custom-js/topnavbar.js"></script>
+        <script type="text/javascript" src="/assets/plugins/slider.swiper/dist/js/swiper.min.js"></script>
+        <script type="text/javascript" src="/assets/js/view/demo.swiper_slider.js"></script>
+        <script type="text/javascript" src="/assets/custom-js/topnavbar.js"></script>
         {% if codeHighlight is defined %}
         <link rel="stylesheet" href="/assets/extended-plugins/highlight/styles/tomorrow.css">
         <link rel="stylesheet" href="/assets/extended-plugins/highlight/line.css">
@@ -296,7 +296,7 @@
         <script>hljs.initLineNumbersOnLoad();</script>
         <!-- important: if you find x scroll bar will appear when using y scroll bar, this might be due tu in tomorrow.css, you have .hljs {overflow-x: auto;} -->
         {% endif %}
-        <script type="text/javascript" src="assets/custom-js/google_data.js"></script>
+        <script type="text/javascript" src="/assets/custom-js/google_data.js"></script>
         {% block jsblock %}
         {% endblock %}
     </body>
