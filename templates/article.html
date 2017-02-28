@@ -34,28 +34,22 @@
 <h1 class="">{{article_info.title}}</h1>
 <ul class="blog-post-info list-inline">
     <li>
-        <a href="#">
             <i class="fa fa-clock-o"></i> 
             <span class="font-lato">{{article_info.lastupdated}}</span>
-        </a>
     </li>
     <li>
-        <a href="#">
             <i class="fa fa-book"></i> 
             <span class="font-lato">{{article_info.reading_num}} Readings</span>
-        </a>
     </li>
     <li>
         <i class="fa fa-folder-open-o"></i> 
-        <a class="category" href="#">
+        <a class="category" href="/blog?blogid={{article_info.blogid}}">
             <span class="font-lato">{{article_info.blogTitle}}</span>
         </a>
     </li>
     <li>
-        <a href="#">
             <i class="fa fa-user"></i> 
             <span class="font-lato">{{article_info.author}}</span>
-        </a>
     </li>
 </ul>
 {{content|safe}}
