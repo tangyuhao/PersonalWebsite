@@ -4,41 +4,65 @@
 {% endblock %} 
 {% block header %}
 <!-- 
-                PAGE HEADER 
-                
-                CLASSES:
-                    .page-header-xs = 20px margins
-                    .page-header-md = 50px margins
-                    .page-header-lg = 80px margins
+    PAGE HEADER 
+    
+    CLASSES:
+        .page-header-xs = 20px margins
+        .page-header-md = 50px margins
+        .page-header-lg = 80px margins
                     .page-header-xlg= 130px margins
-                    .dark           = dark page header
+        .dark       = dark page header
+        .light      = light page header
+-->
+<!-- <section class="page-header page-header-md">
+    <div class="container">
 
-                    .shadow-before-1    = shadow 1 header top
-                    .shadow-after-1     = shadow 1 header bottom
-                    .shadow-before-2    = shadow 2 header top
-                    .shadow-after-2     = shadow 2 header bottom
-                    .shadow-before-3    = shadow 3 header top
-                    .shadow-after-3     = shadow 3 header bottom
-            -->
-            <section class="page-header dark page-header-xs">
-                <div class="container">
+        <h1>BLOG</h1>
+        <span class="font-lato size-18 weight-300">We believe in Simple & Creative</span>
 
-                    <h1>BLOG</h1>
-
-                    <!-- breadcrumbs -->
-                    <ol class="breadcrumb">
-                        <li><a href="/">Home</a></li>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
                         <li><a href="/blog">Blog</a></li>
                         {% if blogid == 0 %}
                         <li class="active">All Articles</li>
                         {% else %}
                         <li class="active">{{blogs_table[blogid]}}</li>
                         {% endif %}
-                    </ol><!-- /breadcrumbs -->
+        </ol>
 
-                </div>
-            </section>
-            <!-- /PAGE HEADER -->
+    </div>
+</section> -->
+<!-- /PAGE HEADER -->
+
+
+<!-- 
+    PAGE HEADER 
+    
+    CLASSES:
+        .page-header-xs = 20px margins
+        .page-header-md = 50px margins
+        .page-header-lg = 80px margins
+                    .page-header-xlg= 130px margins
+        .dark       = dark page header
+        .light      = light page header
+-->
+<section class="page-header light page-header-xs">
+    <div class="container">
+
+        <ol class="breadcrumb breadcrumb-inverse">
+            <li><a href="/">Home</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        {% if blogid == 0 %}
+                        <li class="active">All Articles</li>
+                        {% else %}
+                        <li class="active">{{blogs_table[blogid]}}</li>
+                        {% endif %}
+        </ol>
+
+    </div>
+</section>
+<!-- /PAGE HEADER -->
+
 {% endblock %}
 {% block content %}
 
@@ -146,12 +170,9 @@
                 <h4>CATEGORIES</h4>
             </div>
             <ul class="list-group list-group-bordered list-group-noicon uppercase">
-                <li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(12)</span> MEDIA</a></li>
-                <li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(8)</span> MOVIES</a></li>
-                <li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(32)</span> NEW</a></li>
-                <li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(16)</span> TUTORIALS</a></li>
-                <li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(2)</span> DEVELOPMENT</a></li>
-                <li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(1)</span> UNCATEGORIZED</a></li>
+            {% for blog in blogs %}
+                <li class="list-group-item"><a href="/blog?blogid={{blog.blogid}}"><span class="size-11 text-muted pull-right">({{blog.article_num}})</span> {{blog.title}}</a></li>
+            {% endfor %}
 
             </ul>
             <!-- /side navigation -->
@@ -217,30 +238,23 @@
 
         <!-- SOCIAL ICONS -->
         <div class="hidden-xs margin-top-30 margin-bottom-60">
-            <a href="#" class="social-icon social-icon-border social-facebook pull-left" data-toggle="tooltip" data-placement="top" title="Facebook">
+            <a href="https://www.facebook.com/yuhao.tang.37" class="social-icon social-icon-border social-facebook pull-left" data-toggle="tooltip" data-placement="top" title="Facebook">
                 <i class="icon-facebook"></i>
                 <i class="icon-facebook"></i>
             </a>
 
-            <a href="#" class="social-icon social-icon-border social-twitter pull-left" data-toggle="tooltip" data-placement="top" title="Twitter">
+            <!-- <a href="#" class="social-icon social-icon-border social-twitter pull-left" data-toggle="tooltip" data-placement="top" title="Twitter">
                 <i class="icon-twitter"></i>
                 <i class="icon-twitter"></i>
-            </a>
+            </a> -->
 
-            <a href="#" class="social-icon social-icon-border social-gplus pull-left" data-toggle="tooltip" data-placement="top" title="Google plus">
-                <i class="icon-gplus"></i>
-                <i class="icon-gplus"></i>
-            </a>
 
-            <a href="#" class="social-icon social-icon-border social-linkedin pull-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
+            <a href="https://www.linkedin.com/in/yuhao-tang-601574124/" class="social-icon social-icon-border social-linkedin pull-left" data-toggle="tooltip" data-placement="top" title="Linkedin">
                 <i class="icon-linkedin"></i>
                 <i class="icon-linkedin"></i>
             </a>
 
-            <a href="#" class="social-icon social-icon-border social-rss pull-left" data-toggle="tooltip" data-placement="top" title="Rss">
-                <i class="icon-rss"></i>
-                <i class="icon-rss"></i>
-            </a>
+
         </div>
 
     </div>

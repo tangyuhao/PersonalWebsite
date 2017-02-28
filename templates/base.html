@@ -58,7 +58,7 @@
         BACKGROUND IMAGE [together with .boxed class]
         data-background="assets/images/boxed_background/1.jpg"
     -->
-    <body class="smoothscroll enable-animation">    
+    <body class="smoothscroll enable-animation ">    
             {% block slideTop %}
 
             {% endblock %} 
@@ -90,12 +90,12 @@
 
                 .clearfix       = required for mobile menu, do not remove!
             -->
-            {% if (isHomePage is defined) or (isArticle is defined)%}
-            <div id="header" class="sticky transparent clearfix" style="border:0; ">
+            {% if (isHomePage is defined)%}
+            <div id="header" class="sticky dark header-md transparent noborder clearfix">
             {% elif isError is defined%}
             <div id="header" class="header-sm dark clearfix">
             {% else %}
-            <div id="header" class="sticky clearfix" >
+            <div id="header" class="sticky dark header-md clearfix" >
             {% endif %}
 
                 <!-- TOP NAV -->
@@ -140,11 +140,10 @@
                         <a class="logo pull-left" href="/">
                         {% if isError is defined %}
                             <img src="/assets/images/MrTang_light_logo.png" alt="">
-                        {% elif (isHomepage is defined) or (isArticle is defined)%}
-                            <img src="/assets/images/MrTang_light_logo.png" alt="">
-                            <img src="/assets/images/MrTang_logo.png" alt="">
+                        {% elif (isHomePage is defined) %}
+                            <img src="/assets/images/MrTang_logo_white.png" alt="">
                         {% else %}
-                            <img src="/assets/images/MrTang_logo.png" alt="">
+                            <img src="/assets/images/MrTang_logo_white.png" alt="">
                         {% endif %}
                         </a>
 
@@ -154,7 +153,11 @@
                             AVAILABLE CLASSES:
                             submenu-dark = dark sub menu
                         -->
+                        {% if (isHomePage is defined) or (isArticle is defined)%}
                         <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
+                        {% else %}
+                        <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
+                        {% endif %}
                             <nav class="nav-main">
 
                                 <!--
@@ -172,7 +175,7 @@
                                         <a href="/">HOME</a>
                                     </li>
                                     <li class="dropdown"><!-- BLOG -->
-                                        <a id="nav-blog" class="dropdown-toggle" >
+                                        <a id="nav-blog" class="dropdown-toggle" href="#">
                                             BLOG
                                         </a>
       <!--                                   <ul class="dropdown-menu">
@@ -183,7 +186,7 @@
                                         </ul> -->
                                     </li>
                                     <li class="dropdown "><!-- PHOTOGRAPHY -->
-                                        <a id="nav-photography" class="dropdown-toggle" >
+                                        <a id="nav-photography" class="dropdown-toggle" href="#">
                                             PHOTOGRAPHY
                                         </a>
                                     </li>

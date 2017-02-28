@@ -23,6 +23,7 @@ app.register_blueprint(api.user_api)
 app.register_blueprint(api.login_api)
 app.register_blueprint(api.navigator_api)
 app.register_blueprint(api.analysis_api)
+app.register_blueprint(api.comments_api)
 
 # Listen on external IPs
 # For us, listen to port 3000 so you can just run 'python app.py' to start the server

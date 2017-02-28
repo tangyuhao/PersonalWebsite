@@ -11,7 +11,8 @@ def show_test():
     else:
         db = connect_to_database()
         cur = db.cursor()
-        cur.execute("SELECT *,DATE_FORMAT(created,'%%b %%d, %%Y') AS date FROM Article WHERE articleid='%s'" %(articleid))
+        cmd = "SELECT *,DATE_FORMAT(created,'%%b %%d, %%Y') AS date FROM Article WHERE articleid=%s"
+        cur.execute(cmd, (articleid))
         article = cur.fetchone()
         if (not article):
             abort(404)
@@ -25,11 +26,18 @@ def show_test():
             cur.execute("SELECT * FROM Blog WHERE blogid=%d" %(article["blogid"]))
             blog_name = cur.fetchone()["title"]
             article["blogTitle"] = blog_name
+
+            cur = db.cursor()
+            cmd = "SELECT * FROM Comments WHERE articleid=%s"
+            cur.execute(cmd, (articleid))
+            comments = cur.fetchall()
+            print(comments)
             content = article_file.read()
             options = {
                 "codeHighlight": True,
                 "article_info": article,
                 "content": content,
+                "comments": comments,
                 "isArticle": True
             }
             return render_template("article.html",**options)

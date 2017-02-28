@@ -25,6 +25,17 @@ INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('sample_article_
 INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('sample_article_7', 2, 'this is a test article', 'this is a test for abstract');
 INSERT INTO Article(articleid, blogid, title, abstract) VALUES ('sample_article_8', 2, 'this is a test article', 'this is a test for abstract');
 
+
+INSERT INTO Comments(articleid, name, content) VALUES ('sample_article_4', 'Guest', 'this is a test comment');
+INSERT INTO Comments(articleid, name, content) VALUES ('sample_article_1', 'Guest', 'this is a test comment');
+INSERT INTO Comments(articleid, name, content) VALUES ('sample_article_1', 'Guest', 'this is a test comment');
+INSERT INTO Comments(articleid, name, content) VALUES ('sample_article_1', 'Guest', 'this is a test comment');
+INSERT INTO Comments(articleid, name, content) VALUES ('sample_article_2', 'Guest', 'this is a test comment');
+INSERT INTO Comments(articleid, name, content) VALUES ('sample_article_2', 'Guest', 'this is a test comment');
+INSERT INTO Comments(articleid, name, content) VALUES ('sample_article_3', 'Guest', 'this is a test comment');
+
+
+
 # These are just for testing albums!
 INSERT INTO Album(title) VALUES('I love sports');
 INSERT INTO Album(title) VALUES('I love football');

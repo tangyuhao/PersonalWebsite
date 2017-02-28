@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS User, Album, Photo, BlogGroup, BlogContain, Blog, Article;
+DROP TABLE IF EXISTS User, Album, Photo, BlogGroup, BlogContain, Blog, Article, Comments;
 CREATE TABLE User(
 	username VARCHAR(20),
 	firstname VARCHAR(20),
@@ -16,6 +16,7 @@ CREATE TABLE Blog(
 	blogid INT AUTO_INCREMENT,
 	groupid INT,
 	title VARCHAR(50),
+	article_num INT DEFAULT 0,
 	PRIMARY KEY(blogid)
 	);
 CREATE TABLE Article(
@@ -28,8 +29,19 @@ CREATE TABLE Article(
 	author VARCHAR(20) DEFAULT 'Mr.Tang',
 	cover_img VARCHAR(64) DEFAULT 'default-3.jpg',
 	reading_num INT DEFAULT 0,
+	comment_num INT DEFAULT 0,
 	PRIMARY KEY(articleid)
 	);
+
+CREATE TABLE Comments(
+	commentid INT AUTO_INCREMENT,
+	articleid VARCHAR(64),
+	name VARCHAR(30) DEFAULT 'Guest',
+	created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	content VARCHAR(4096),
+	PRIMARY KEY(commentid)
+	);
+
 CREATE TABLE Album(
 	albumid INT AUTO_INCREMENT,
 	title VARCHAR(50),
@@ -63,6 +75,32 @@ FOR EACH ROW
 	UPDATE Album 
 	SET lastupdated = CURRENT_TIMESTAMP
 	WHERE albumid = OLD.albumid;
+
+CREATE TRIGGER article_add_update AFTER INSERT ON Article
+FOR EACH ROW
+	UPDATE Blog
+	SET article_num = article_num + 1
+	WHERE blogid = NEW.blogid;
+
+CREATE TRIGGER article_delete_update AFTER DELETE ON Article
+FOR EACH ROW
+	UPDATE Blog
+	SET article_num = article_num - 1
+	WHERE blogid = OLD.blogid;
+
+
+
+CREATE TRIGGER comment_add_update AFTER INSERT ON Comments
+FOR EACH ROW
+	UPDATE Article
+	SET comment_num = comment_num + 1
+	WHERE articleid = NEW.articleid;
+
+CREATE TRIGGER comment_delete_update AFTER DELETE ON Comments
+FOR EACH ROW
+	UPDATE Article
+	SET comment_num = comment_num - 1
+	WHERE articleid = OLD.articleid;
 
 -- CREATE TRIGGER album_delete_update AFTER DELETE ON Album
 -- FOR EACH ROW

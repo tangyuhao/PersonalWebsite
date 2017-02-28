@@ -1,5 +1,7 @@
 $(document).ready(function() {
     article_createNav();
+    setTimeout(reading_num_add,20000);// reading after 20s will increase the counter
+    $("#comment_form").submit(article_comment_submit);
 });
 function article_createNav(){
     var titles = $("h2[id^='toc_'],h3[id^='toc_']");
@@ -44,3 +46,38 @@ function article_createTitleH3(node){
     var retNode = $("<li><a href=\"#"+node.id+"\">"+node.innerHTML+"</a></li>")
     return retNode;
 }
+function reading_num_add(){
+    console.log("ahah")
+     $.ajax({
+
+            url: "/api/analysis/articles/" + getAllUrlParams().articleid,
+            type: "GET",
+        });
+}
+
+
+function article_comment_submit(event){
+    event.preventDefault(); 
+    var url = "/api/comments";
+    if ($('#comment_form').serializeArray()[0].value == "")
+        name = "Guest"
+    else
+        name = $('#comment_form').serializeArray()[0].value
+    content = $('#comment_form').serializeArray()[1].value
+    console.log("hahaha")
+    data_dict = {
+        name :name,
+        content: content,
+        articleid: getAllUrlParams().articleid 
+    }
+     $.ajax({
+            url: url,
+            type: "POST",
+            data: JSON.stringify(data_dict),
+            dataType: "json",
+            success: function(data,status){window.location.replace(window.location.search)},
+            contentType: "application/json"
+        });
+
+}
+

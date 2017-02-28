@@ -51,7 +51,7 @@ def show_blog():
         articles = cur.fetchall()
 
     cur = db.cursor()
-    cur.execute("SELECT blogid,title FROM Blog")
+    cur.execute("SELECT blogid,title,article_num FROM Blog")
     blogs = cur.fetchall()
     blogs_table = {}
     for blog in blogs:
@@ -72,6 +72,7 @@ def show_blog():
         "PAGES_EACHBAR": PAGES_EACHBAR,
         "blogs_table": blogs_table,
         "blogid": blogid,
+        "blogs":blogs,
         "page_range": page_range
     }
     return render_template("blog.html",**options)
