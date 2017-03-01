@@ -20,7 +20,6 @@
 
 {% endblock %}
 {% block content %}
-<div id="left_div" class="col-md-9 col-sm-9">
 <!-- blog-post-title -->
 <h1 class="blog-post-title" style="font-size:40px">{{article_info.title}}</h1>
 <ul class="blog-post-info list-inline">
@@ -43,6 +42,7 @@
             <span class="font-lato">{{article_info.author}}</span>
     </li>
 </ul>
+<div id="left_div" class="col-md-9 col-sm-9">
 <figure class="margin-bottom-20" >
                                 <img class="img-responsive" src="{{'/assets/blog/images/'+article_info.cover_img}}" alt="img">
                             </figure>
@@ -140,8 +140,7 @@
 <div id="article_nav" class="side-nav margin-bottom-60 ">
 
     <div class="side-nav-head">
-        <button class="fa fa-bars"></button>
-        <h4>CATEGORIES</h4>
+        <h4>CONTENTS</h4>
     </div>
 
 
