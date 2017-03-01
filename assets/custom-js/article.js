@@ -5,6 +5,15 @@ $(document).ready(function() {
 });
 function article_createNav(){
     var titles = $("h2[id^='toc_'],h3[id^='toc_']");
+    if (titles.length < 2){
+        $("#right_div").remove();
+        $("#left_div").removeClass("col-md-9 col-sm-9").addClass("col-md-12 col-sm-12")
+        // $("#article_nav").css("display","none")
+
+        return;
+    }
+
+
     var TitleH2 = $("");
     var article_nav_node = $("<ul class=\"list-group list-group-bordered list-group-noicon uppercase\"></ul>");
     var ulNode = $("<ul></ul>");
