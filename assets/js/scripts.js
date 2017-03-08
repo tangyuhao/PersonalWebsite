@@ -280,23 +280,24 @@
 
 
 		// Mobile Submenu
-		var addActiveClass 	= false;
-		jQuery("#topMain a.dropdown-toggle").bind("click", function(e) {
+		// var addActiveClass 	= false;
+		// //jQuery("#topMain a.dropdown-toggle").bind("click", function(e) 
+		// $(document).on("click","#topMain a.dropdown-toggle",function(e){
 			
-			if(jQuery(this).attr('href') == "#") {
-				e.preventDefault();
-			}
+		// 	if(jQuery(this).attr('href') == "#") {
+		// 		e.preventDefault();
+		// 	}
 
-			addActiveClass = jQuery(this).parent().hasClass("resp-active");
-			jQuery("#topMain").find(".resp-active").removeClass("resp-active");
+		// 	addActiveClass = jQuery(this).parent().hasClass("resp-active");
+		// 	jQuery("#topMain").find(".resp-active").removeClass("resp-active");
 
-			if(!addActiveClass) {
-				jQuery(this).parents("li").addClass("resp-active");
-			}
+		// 	if(!addActiveClass) {
+		// 		jQuery(this).parents("li").addClass("resp-active");
+		// 	}
 
-			return;
+		// 	return;
 
-		});
+		// });
 
 
 		// Srearch

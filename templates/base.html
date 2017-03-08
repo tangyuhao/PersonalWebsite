@@ -91,11 +91,11 @@
                 .clearfix       = required for mobile menu, do not remove!
             -->
             {% if (isHomePage is defined)%}
-            <div id="header" class="sticky dark header-md transparent noborder clearfix">
+            <div id="header" class="sticky  clearfix fixed dark transparent noborder">
             {% elif isError is defined%}
-            <div id="header" class="header-sm dark clearfix">
+            <div id="header" class="sticky clearfix fixed dark ">
             {% else %}
-            <div id="header" class="sticky dark header-md clearfix" >
+            <div id="header" class="sticky dark clearfix fixed" >
             {% endif %}
 
                 <!-- TOP NAV -->
@@ -108,6 +108,13 @@
                         </button>
 
                         <!-- BUTTONS -->
+
+
+
+
+
+
+
                         <ul class="pull-right nav nav-pills nav-second-main">
 
                             <!-- SEARCH -->
@@ -153,11 +160,7 @@
                             AVAILABLE CLASSES:
                             submenu-dark = dark sub menu
                         -->
-                        {% if (isHomePage is defined) or (isArticle is defined)%}
                         <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
-                        {% else %}
-                        <div class="navbar-collapse pull-right nav-main-collapse collapse submenu-dark">
-                        {% endif %}
                             <nav class="nav-main">
 
                                 <!--
