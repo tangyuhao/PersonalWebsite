@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 from flask import *
 from extensions import connect_to_database 
+import codecs
 
 article = Blueprint('article', __name__, template_folder='templates')
 
@@ -19,7 +21,7 @@ def show_test():
         else:
             file_name = articleid + ".html"
             try:
-                article_file = open("./assets/blog/articles/" + file_name,"r") 
+                article_file = codecs.open("./assets/blog/articles/" + file_name,"r","utf-8") 
             except:
                 abort(404)
             cur = db.cursor()
@@ -31,7 +33,6 @@ def show_test():
             cmd = "SELECT * FROM Comments WHERE articleid=%s"
             cur.execute(cmd, (articleid))
             comments = cur.fetchall()
-            print(comments)
             content = article_file.read()
             options = {
                 "codeHighlight": True,

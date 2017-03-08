@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import *
 
 main = Blueprint('main', __name__, template_folder='templates', static_folder='../assets/static_html')

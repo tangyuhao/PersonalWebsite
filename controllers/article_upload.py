@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 from flask import *
 from extensions import connect_to_database 
 from werkzeug.utils import secure_filename
 import hashlib
 import uuid
 import os
+import codecs
 
 UPLOAD_FOLDER = 'assets/blog/images'
 CONTENT_FOLDER = 'assets/blog/articles'
@@ -50,8 +52,6 @@ def upload_article_route():
         return render_template("article_upload.html", **options)
 
 def check_upload_valid(form,files,db):
-    print(form)
-    print(files)
     needed_key = ['title', 'abstract', 'content', 'blogid']
     for key in needed_key:
         if key not in form:
@@ -64,7 +64,6 @@ def check_upload_valid(form,files,db):
                 return False, "ERROR: empty input is not allowed", 422
 
         orig_file = files['img_file']
-        print((orig_file.filename))
         if orig_file and allowed_file(orig_file.filename):
             filename = secure_filename(orig_file.filename) # prevent injection, do not accept chinese charactors
         else:
@@ -78,7 +77,7 @@ def check_upload_valid(form,files,db):
         orig_file.save(os.path.join(UPLOAD_FOLDER,img_name_ext))
         file_name = title_hash(form["title"])
         try:
-            f = open(os.path.join(CONTENT_FOLDER,file_name + ".html"),"w+")
+            f = codecs.open(os.path.join(CONTENT_FOLDER,file_name + ".html"),"w+","utf-8")
         except:
             f.close()
             return False, "ERROR:create file failed", 500

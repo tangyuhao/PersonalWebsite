@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import *
 
 logout = Blueprint('logout', __name__, template_folder='templates')

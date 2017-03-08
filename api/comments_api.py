@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import *
 from extensions import connect_to_database 
 comments_api = Blueprint('comments_api', __name__, template_folder='templates')
@@ -23,9 +24,7 @@ def check_valid(form):
     if not form:
         return False
 
-    print(form)
     for item in needed_item:
         if item not in form:
-            print(item)
             return False
     return True

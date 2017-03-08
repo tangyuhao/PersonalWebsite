@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import *
 from extensions import connect_to_database 
 import math

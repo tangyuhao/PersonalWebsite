@@ -85,7 +85,7 @@ function article_comment_submit(event){
             data: JSON.stringify(data_dict),
             dataType: "json",
             success: function(data,status){window.location.replace(window.location.search)},
-            contentType: "application/json"
+            contentType: "application/json;charset=UTF-8"
         });
 
 }
