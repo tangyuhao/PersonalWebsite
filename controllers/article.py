@@ -30,15 +30,13 @@ def show_test():
             article["blogTitle"] = blog_name
 
             cur = db.cursor()
-            cmd = "SELECT * FROM Comments WHERE articleid=%s"
-            cur.execute(cmd, (articleid))
-            comments = cur.fetchall()
+
             content = article_file.read()
             options = {
+                "articleid": articleid,
                 "codeHighlight": True,
                 "article_info": article,
                 "content": content,
-                "comments": comments,
                 "isArticle": True
             }
             return render_template("article.html",**options)
