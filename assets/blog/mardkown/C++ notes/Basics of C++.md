@@ -145,12 +145,7 @@ extern C {
 ```
 Your can refer to this link to find out: [In C++ source, what is the effect of extern “C”?](http://stackoverflow.com/questions/1041866/in-c-source-what-is-the-effect-of-extern-c)
 
-## use C and C++ together
-### use C and C++ together
 
-### use C and C++ together
-## use C and C++ together
-## use C and C++ together
 
 
 

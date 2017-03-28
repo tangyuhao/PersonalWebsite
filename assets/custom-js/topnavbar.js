@@ -3,7 +3,8 @@ $(document).ready(function() {
 
 });
 function topnavbar_handler(data){
-    // console.log(data);
+    console.log(data);
+
     var blogGroup = data.Blog;
     //console.log(blogGroup);
     var photography = data.Photography;
@@ -12,7 +13,13 @@ function topnavbar_handler(data){
         photographyList.append("<li><a href=\"/album?albumid=" + item.albumid + "\">"+
             item.title.toUpperCase() + "</a></li>");
     }
-    $("#nav-photography").after(photographyList)
+    /******** choose whether to show photography menu ********/
+    // choose below to show photograph
+    //$("#nav-photography").after(photographyList)
+    // choose below to delete photograph
+    $("#nav-photography").remove()
+    /* *********************************************** */
+
     keys = Object.keys(blogGroup).sort();
     keys.splice(keys.indexOf("Others"),1);
     keys.push("Others");

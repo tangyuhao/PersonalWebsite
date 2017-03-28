@@ -17,6 +17,7 @@ app.register_blueprint(controllers.article)
 app.register_blueprint(controllers.login)
 app.register_blueprint(controllers.logout)
 app.register_blueprint(controllers.article_upload)
+app.register_blueprint(controllers.article_edit)
 
 
 # Register the api

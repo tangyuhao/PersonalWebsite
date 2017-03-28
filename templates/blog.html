@@ -104,9 +104,11 @@
                         <i class="fa fa-user"></i> 
                         <span class="font-lato">{{article.author}}</span>
                 </li>
-                {% if session["username"] is defined%}
+                {% if session["username"] is defined %}
                 <li>
+                    <a href="/article/edit?articleid={{article.articleid}}">
                         <input type="button" class="btn btn-reveal btn-default" value="Edit" />
+                        </a>
                 </li>
                 <li>
                         <input id="delete_btn_{{article.articleid}}" type="button" class="btn btn-reveal btn-default" onClick="disp_confirm(this.id)" value="Delete" />

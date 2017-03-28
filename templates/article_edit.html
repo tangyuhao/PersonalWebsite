@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block slideTop %}
+
+{% endblock %} 
+
+{% block header %}
+
+{% endblock %}
+{% block content %}
+<h1 align="center">Article Submittion</h1>
+{% if message is defined %}
+<p style="color:red">{{message}}</p>
+{% endif %}
+
+<form id="article_submit_form" enctype="multipart/form-data" action="" method="POST" class="">
+<!-- <div class="col-md-6 col-sm-6">
+ --><div class="fancy-form fancy-form-select ">
+    <select name="blogid" class="form-control select2" >
+        <option value="">--- Blog Class ---</option>
+        {% if article_info is defined %}
+            {% for blog in blogs %}
+                {% if blog.blogid == article_info.blogid %}
+                    <option selected="selected" value="{{blog.blogid}}">{{blog.title}}</option>
+                {% else %}
+                    <option value="{{blog.blogid}}">{{blog.title}}</option>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for blog in blogs %}
+                <option value="{{blog.blogid}}">{{blog.title}}</option>
+            {% endfor %}
+        {% endif %}
+    </select>
+
+
+    <!--
+        .fancy-arrow
+        .fancy-arrow-double
+    -->
+    <i class="fancy-arrow"></i>
+</div>
+
+
+
+
+<!-- input -->
+<div class="fancy-form">
+    <i class="fa fa-user"></i>
+
+    {% if article_info is defined %}
+    <input type="text" class="form-control" name="title" value="{{article_info.title}}" placeholder="Article Title">
+    {% else %}
+    <input type="text" class="form-control" name="title" placeholder="Article Title">
+    {% endif %}
+
+    <!-- tooltip - optional, bootstrap tooltip can be used instead -->
+    <span class="fancy-tooltip top-left"> <!-- positions: .top-left | .top-right -->
+        <em>I am a Title!</em>
+    </span>
+</div>
+
+<!-- fancy info -->
+<div class="fancy-file-upload fancy-file-info">
+    <i class="fa fa-upload"></i>
+
+    <input type="file" class="form-control" accept="image/*" name="img_file" onchange="jQuery(this).next('input').val(this.value); " />
+    <input type="text" class="form-control"  placeholder="no file selected" readonly="" />
+    <span class="button">Choose File</span>
+</div>
+
+<!-- textarea -->
+<div class="fancy-form">
+    {% if article_info is defined %}
+    <textarea name="abstract" rows="5" class="form-control word-count"  data-info="textarea-words-info" placeholder="Abstract Here" >{{article_info.abstract}}</textarea>
+    {% else %}
+    <textarea name="abstract" rows="5" class="form-control word-count"  data-info="textarea-words-info" placeholder="Abstract Here"></textarea>
+    {% endif %}
+    <i class="fa fa-comments"><!-- icon --></i>
+
+    <span class="fancy-hint size-11 text-muted">
+        <strong>Hint:</strong> 4000 characters allowed!
+    </span>
+
+</div>
+
+<!-- textarea -->
+<div class="fancy-form">
+    {% if content is defined %}
+    <textarea name="content" rows="30" class="form-control "  data-info="textarea-words-info" placeholder="Content Here" >{{content}}</textarea>
+    {% else %}
+    <textarea name="content" rows="15" class="form-control "  data-info="textarea-words-info" placeholder="Content Here"></textarea>    
+    {% endif %}
+
+    <i class="fa fa-comments"><!-- icon --></i>
+
+</div>
+
+
+<button type="submit" form="article_submit_form" class="btn btn-3d btn-teal btn-xlg btn-block margin-top-30">SUBMIT</button>
+</form>
+
+
+
+{% endblock %}
+{% block jsblock %}
+{% endblock %}

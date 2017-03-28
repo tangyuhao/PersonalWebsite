@@ -1,19 +1,18 @@
 # this is my default username and password
 INSERT INTO User VALUES('yuhaotang','Yuhao','Tang','sha512$061faf7306ab4f5a8d7c011016ba9c1e$e58242f8651b9169794dca810c34ac1d45abb5fd13580a014df20a1faa9af907f4c3aff2cd8f3a401d7362e0e04aa63f638c67bfcfd5266672e0842c009b8bb6','blogyhtang1993@gmail.com');
 
-
 INSERT INTO BlogGroup(title) VALUES ('Tech'); # id: 1
-INSERT INTO Blog(title,groupid) VALUES ('Test',1);
 INSERT INTO Blog(title,groupid) VALUES ('Deep Learning',1);
 INSERT INTO Blog(title,groupid) VALUES ('Computer Vision',1);
 INSERT INTO Blog(title,groupid) VALUES ('Web Development',1);
 INSERT INTO Blog(title,groupid) VALUES ('Leetcode',1);
+INSERT INTO Blog(title,groupid) VALUES ('Programming Languages',1);
+INSERT INTO Blog(title,groupid) VALUES ('Productivity',1);
 
-INSERT INTO BlogGroup(title) VALUES ('Travel'); # id: 2 
+INSERT INTO BlogGroup(title) VALUES ('Others'); # id: 2
 INSERT INTO Blog(title,groupid) VALUES ('Travel',2);
-
-INSERT INTO BlogGroup(title) VALUES ('Others'); # id: 3 
-INSERT INTO Blog(title,groupid) VALUES ('Others',3);
+INSERT INTO Blog(title,groupid) VALUES ('Life',2);
+INSERT INTO Blog(title,groupid) VALUES ('随笔',2);
 
 # These are just for testing blogs!
 # INSERT INTO Article(articleid, blogid, title, abstract, cover_img) VALUES ('sample_article_1', 1, 'this is a test article', 'this is a test for abstract', 'default-1.jpg');
@@ -37,10 +36,8 @@ INSERT INTO Blog(title,groupid) VALUES ('Others',3);
 
 
 # These are just for testing albums!
-INSERT INTO Album(title) VALUES('I love sports');
-INSERT INTO Album(title) VALUES('I love football');
-INSERT INTO Album(title) VALUES('Around The World');
-INSERT INTO Album(title) VALUES('Cool Space Shots');
+INSERT INTO Album(title) VALUES('test');
+
 
 # INSERT INTO Photo(albumid,picid,format) VALUES(2,'001025dd643b0eb0661e359de86e3ea9','jpg');
 # INSERT INTO Photo(albumid,picid,format) VALUES(2,'9a0a7d25af4f7a73f67dde74e8e54cff','jpg');
