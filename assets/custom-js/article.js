@@ -1,5 +1,6 @@
 $(document).ready(function() {
     article_createNav();
+
     setTimeout(reading_num_add,20000);// reading after 20s will increase the counter
     $("#comment_form").submit(article_comment_submit);
 });
@@ -14,6 +15,7 @@ function article_createNav(){
     }
 
 
+
     var TitleH2 = $("");
     var article_nav_node = $("<ul class=\"list-group list-group-bordered list-group-noicon uppercase\"></ul>");
     var ulNode = $("<ul></ul>");
@@ -24,11 +26,13 @@ function article_createNav(){
 
             // old title
             if (lastTitleName === "H3"){
+                console.log(title)
                 TitleH2.append(ulNode);
                 //console.log(TitleH2.children())
                 var tempNode = TitleH2.children();
                 tempNode[0].classList.add("dropdown-toggle");
             }
+            console.log(TitleH2)
             article_nav_node.append(TitleH2);
 
             // new title
@@ -41,6 +45,13 @@ function article_createNav(){
             lastTitleName = "H3";
         }
     }
+    if (lastTitleName === "H3"){
+                TitleH2.append(ulNode);
+                //console.log(TitleH2.children())
+                var tempNode = TitleH2.children();
+                tempNode[0].classList.add("dropdown-toggle");
+            }
+    article_nav_node.append(TitleH2)
     $("#article_nav").append(article_nav_node);
 }
 

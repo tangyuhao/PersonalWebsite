@@ -71,7 +71,6 @@
 <!-- LEFT -->
     <div class="col-md-9 col-sm-9">
 
-       
 
 
 {% for article in articles %}
@@ -105,6 +104,14 @@
                         <i class="fa fa-user"></i> 
                         <span class="font-lato">{{article.author}}</span>
                 </li>
+                {% if session["username"] is defined%}
+                <li>
+                        <input type="button" class="btn btn-reveal btn-default" value="Edit" />
+                </li>
+                <li>
+                        <input id="delete_btn_{{article.articleid}}" type="button" class="btn btn-reveal btn-default" onClick="disp_confirm(this.id)" value="Delete" />
+                </li>
+                {% endif %}
             </ul>
 
             <p>{{article.abstract}}</p>
@@ -262,5 +269,39 @@
     </div>
 
 </div>
+
+{% endblock %}
+{% block jsblock %}
+ <script type="text/javascript">
+function disp_confirm(id)
+  {
+  var r = confirm("Do you want to delete it?")
+  if (r==true)
+    {
+    console.log("pressed OK")
+    console.log(id)
+    var articleid = id.substr(11)
+    console.log(articleid)
+    data_dict = {
+        cmd: "delete",
+        articleid: articleid
+    }
+    $.ajax({
+            url: "/api/article",
+            type: "POST",
+            data: JSON.stringify(data_dict),
+            dataType: "json",
+            success: function(data,status){window.location.replace(window.location.search)},
+            contentType: "application/json;charset=UTF-8"
+        });
+
+
+
+    }
+    
+  else
+    console.log("pressed cancel")
+  }
+</script>
 
 {% endblock %}
