@@ -52,7 +52,8 @@ Here you have created a new virtual envronment ready for installation of Tensorf
 
 ## Test your tensorflow
 -  Open your anaconda, then you will find your virtualenv here:
-![Screen Shot 2017-03-28 at 17.30.50](/assets/blog/article_img/Screen%20Shot%202017-03-28%20at%2017.30.50.png)
+<img align="center" src="/assets/blog/article_img/tensorflow.png" alt="" class="img-responsive"/>
+
 choose tensorflow (you should choose your virtual environment you just created) and then install "spyder" in the panel.
 - Lauch spyder and try to run the script below:
 
