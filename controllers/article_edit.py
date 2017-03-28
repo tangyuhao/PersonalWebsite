@@ -52,7 +52,7 @@ def edit_article_route():
             options = {"blogid":form["blogid"]}
             return redirect(url_for('blog.show_blog', **options))
 
-    f = open("./assets/blog/articles/" + article_info["articleid"] + ".html","r")
+    f = codecs.open("./assets/blog/articles/" + article_info["articleid"] + ".html","r","utf-8")
     content = f.read()
     f.close()
     

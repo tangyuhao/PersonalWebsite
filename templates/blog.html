@@ -116,7 +116,7 @@
                 {% endif %}
             </ul>
 
-            <p>{{article.abstract}}</p>
+            <p>{{article.abstract|safe}}</p>
 
             <a href="/article?articleid={{article.articleid}}" class="btn btn-reveal btn-default">
                 <i class="fa fa-plus"></i>
