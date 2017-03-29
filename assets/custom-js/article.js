@@ -8,12 +8,13 @@ function article_createNav(){
     var titles = $("h2[id^='toc_'],h3[id^='toc_']");
     if (titles.length < 2){
         $("#right_div").remove();
+        // if there is no titles, then let article fill all colomns
         $("#left_div").removeClass("col-md-9 col-sm-9").addClass("col-md-12 col-sm-12")
         // $("#article_nav").css("display","none")
 
         return;
     }
-
+    
 
 
     var TitleH2 = $("");
@@ -53,21 +54,29 @@ function article_createNav(){
             }
     article_nav_node.append(TitleH2)
     $("#article_nav").append(article_nav_node);
+    for (title of titles){
+        tagid = title.id + "tag";
+        var new_tag = $("<span></span>",{"id":tagid});
+        // don't use title directly!!!!
+        // if you use title.append(new_tag) then you will get [object object]
+        $("#"+title.id).append(new_tag);
+
+    }
 }
 
 function article_createTitleH2(node){
     var topNode = $("<li class=\"list-group-item\"></li>");
-    var name = $("<a  href=\"#"+node.id+"\">"+node.innerHTML+"</a>");
+    var name = $("<a  href=\"#"+node.id+"tag\">"+node.innerHTML+"</a>");
     topNode.append(name);
     return topNode;
 }
 
 function article_createTitleH3(node){
-    var retNode = $("<li><a href=\"#"+node.id+"\">"+node.innerHTML+"</a></li>")
+    var retNode = $("<li><a href=\"#"+node.id+"tag\">"+node.innerHTML+"</a></li>")
     return retNode;
 }
 function reading_num_add(){
-    console.log("ahah")
+    console.log("add reading number")
      $.ajax({
 
             url: "/api/analysis/articles/" + getAllUrlParams().articleid,
