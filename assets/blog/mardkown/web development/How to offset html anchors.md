@@ -27,6 +27,7 @@ for (title of titles){
     var new_tag = $("<span></span>",{"id":tagid});
     // don't use title directly!!!!
     // if you use title.append(new_tag) then you will get [object object] after the node you want to append
+    // I also don't know why... Maybe it is a bug
     $("#"+title.id).append(new_tag);
     }
 ```
@@ -53,6 +54,10 @@ h2{ position:relative; }
 h2 span{ position:absolute; top:-80px;}
 h3 span{ position:absolute; top:-80px;}
 ```
-Then when you click the links to anchors, the position of your headlines will offset by 80px downward!
+Then when you click the links to anchors, the position of your headlines will offset by 80px downward! Just look like this:
+<p><img class="img-responsive" align="center" src="/assets/blog/article_img/offset.png" alt="offset"/></p>
+
+
+
 
 
